@@ -10,9 +10,14 @@ const IMAGES = [cat1, cat2, cat3, cat4, cat5, cat6]
 
 export default function App() {
   return (
-    <>
+    <div style={{
+      maxWidth: "1200px",
+      width:"100%",
+      aspectRatio: "10 / 6",
+      margin: "0 auto"
+    }}>
       <ImageSlider imageUrls={IMAGES} />
-    </>
+    </div>
   )
 }
 
