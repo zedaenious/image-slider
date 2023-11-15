@@ -9,6 +9,20 @@ type ImageSliderProps = {
 export function ImageSlider({ imageUrls }: ImageSliderProps) {
   const [imageIndex, setImageIndex] = useState(0)
 
+  function showPreviousImage() {
+    setImageIndex(index => {
+      if (index === imageUrls.length - 1) return 0
+      return index + 1
+    })
+  }
+  
+  function showNextImage() {
+    setImageIndex(index => {
+      if (index === 0) return imageUrls.length - 1
+      return index - 1
+    })
+  }
+
   return (
   <>
     <section style={{
@@ -20,10 +34,12 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
       <button
         className="image-slider-button"
         style={{ left: 0 }}
+        onClick={showPreviousImage}
       ><ArrowBigLeft /></button>
       <button
         className="image-slider-button"
         style={{ right: 0 }}
+        onClick={showNextImage}
       ><ArrowBigRight /></button>
     </section>
   </>
