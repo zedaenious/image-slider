@@ -18,8 +18,8 @@ const IMAGES = [
 
 export default function App() {
   return (
-    <div id="image-slider-container">
+    <section aria-label="Image Slider" id="image-slider-container">
       <ImageSlider images={IMAGES} />
-    </div>
+    </section>
   )
 }
