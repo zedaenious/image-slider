@@ -23,49 +23,47 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
   }
 
   return (
-  <>
     <section id="image-slider">
-      <div id="image-dump">
-        {imageUrls.map(url => (
-          <img
-            key={url}
-            src={url}
-            className="image-slider-image"
-            style={{ translate: `${-100 * imageIndex}%` }}
-          />
-        ))}
-      </div>
-      <button
-        onClick={showPreviousImage}
-        className="image-slider-button"
-        style={{ left: 0 }}
-      ><ArrowBigLeft /></button>
-      <button
-        onClick={showNextImage}
-        className="image-slider-button"
-        style={{ right: 0 }}
-      ><ArrowBigRight /></button>
-      <div
-        style={{
-          position: "absolute",
-          bottom: ".5rem",
-          left: "50%",
-          translate: "-50%",
-          display: "flex",
-          gap: ".25rem"
-        }}
-      >
-        {imageUrls.map((_, i) => (
-          <button
-            key={i}
-            className="image-slider-dot-button"
-            onClick={() => setImageIndex(i)}
-          >
-            { i === imageIndex ? <CircleDot /> : <Circle /> }
-          </button>
-        ))}
-      </div>
-    </section>
-  </>
- ) 
+    <div id="image-dump">
+      {imageUrls.map(url => (
+        <img
+          key={url}
+          src={url}
+          className="image-slider-image"
+          style={{ translate: `${-100 * imageIndex}%` }}
+        />
+      ))}
+    </div>
+    <button
+      onClick={showPreviousImage}
+      className="image-slider-button"
+      style={{ left: 0 }}
+    ><ArrowBigLeft /></button>
+    <button
+      onClick={showNextImage}
+      className="image-slider-button"
+      style={{ right: 0 }}
+    ><ArrowBigRight /></button>
+    <nav
+      style={{
+        position: "absolute",
+        bottom: ".5rem",
+        left: "50%",
+        translate: "-50%",
+        display: "flex",
+        gap: ".25rem"
+      }}
+    >
+      {imageUrls.map((_, i) => (
+        <button
+          key={i}
+          className="image-slider-dot-button"
+          onClick={() => setImageIndex(i)}
+        >
+          { i === imageIndex ? <CircleDot /> : <Circle /> }
+        </button>
+      ))}
+    </nav>
+  </section>
+  )
 }
