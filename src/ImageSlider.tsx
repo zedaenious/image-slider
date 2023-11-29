@@ -27,6 +27,7 @@ export function ImageSlider({ images }: ImageSliderProps) {
 
   return (
     <div id="image-slider">
+      <a href="#after-image-slider-controls" id="skip-link">Skip Image Slider Controls</a>
       <div id="image-dump">
         {images.map(({url, alt}, index) => (
           <img
@@ -78,6 +79,7 @@ export function ImageSlider({ images }: ImageSliderProps) {
           </button>
         ))}
       </nav>
+      <div id="after-image-slider-controls" />
     </div>
   )
 }
