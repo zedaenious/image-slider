@@ -5,26 +5,14 @@ import cat3 from "/src/images/cat-3.jpeg"
 import cat4 from "/src/images/cat-4.jpeg"
 import cat5 from "/src/images/cat-5.jpeg"
 import cat6 from "/src/images/cat-6.jpeg"
+import "./image-slider.css"
 
 const IMAGES = [cat1, cat2, cat3, cat4, cat5, cat6]
 
 export default function App() {
   return (
-    <div style={{
-      maxWidth: "1200px",
-      width:"100%",
-      aspectRatio: "10 / 6",
-      margin: "0 auto"
-    }}>
+    <div id="image-slider-container">
       <ImageSlider imageUrls={IMAGES} />
     </div>
   )
 }
-
-
-// { url: cat1, alt: "Cat 1" },
-// { url: cat2, alt: "Cat 2" },
-// { url: cat3, alt: "Cat 3" },
-// { url: cat4, alt: "Cat 4" },
-// { url: cat5, alt: "Cat 5" },
-// { url: cat6, alt: "Cat 6" },
