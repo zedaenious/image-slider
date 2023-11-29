@@ -31,7 +31,6 @@
   display: block;
   flex-shrink: 0;
   flex-grow: 0;
-  transition: translate 300ms ease-in-out;
 }
 
 .image-slider-button {
@@ -55,17 +54,6 @@
   fill: black;
   width: 2rem;
   height: 2rem;
-}
-
-.image-slider-button:hover > *,
-.image-slider-button:focus-visible > * {
-  animation: squish 350ms ease-in-out;
-}
-
-@keyframes squish {
-  50% {
-    scale: 1.25 1.25;
-  }
 }
 
 .image-slider-dot-button {
@@ -119,4 +107,21 @@
   text-decoration: none;
   color: black;
   z-index: 100;
+}
+
+@keyframes squish {
+  50% {
+    scale: 1.25 1.25;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .image-slider-image {
+    transition: translate 300ms ease-in-out;
+  }
+
+  .image-slider-button:hover > *,
+  .image-slider-button:focus-visible > * {
+    animation: squish 350ms ease-in-out;
+  }
 }
