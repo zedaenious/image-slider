@@ -2,22 +2,25 @@ import { useState } from "react"
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react"
 
 type ImageSliderProps = {
-  imageUrls: string[]
+  images: {
+    url: string
+    alt: string
+  }[]
 }
 
-export function ImageSlider({ imageUrls }: ImageSliderProps) {
+export function ImageSlider({ images }: ImageSliderProps) {
   const [imageIndex, setImageIndex] = useState(0)
 
   function showPreviousImage() {
     setImageIndex(index => {
-      if (index === 0) return imageUrls.length - 1
+      if (index === 0) return images.length - 1
       return index - 1
     })
   }
   
   function showNextImage() {
     setImageIndex(index => {
-      if (index === imageUrls.length - 1) return 0
+      if (index === images.length - 1) return 0
       return index + 1
     })
   }
@@ -25,25 +28,29 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
   return (
     <section id="image-slider">
     <div id="image-dump">
-      {imageUrls.map(url => (
+      {images.map(({url, alt}, index) => (
         <img
           key={url}
           src={url}
+          alt={alt}
+          aria-hidden={imageIndex !== index}
           className="image-slider-image"
           style={{ translate: `${-100 * imageIndex}%` }}
         />
       ))}
     </div>
     <button
+      aria-label="View Previous Image"
       onClick={showPreviousImage}
       className="image-slider-button"
       style={{ left: 0 }}
-    ><ArrowBigLeft /></button>
+    ><ArrowBigLeft aria-hidden /></button>
     <button
+      aria-label="View Next Image"
       onClick={showNextImage}
       className="image-slider-button"
       style={{ right: 0 }}
-    ><ArrowBigRight /></button>
+    ><ArrowBigRight aria-hidden /></button>
     <nav
       style={{
         position: "absolute",
@@ -54,13 +61,18 @@ export function ImageSlider({ imageUrls }: ImageSliderProps) {
         gap: ".25rem"
       }}
     >
-      {imageUrls.map((_, i) => (
+      {images.map((_, i) => (
         <button
           key={i}
+          aria-label={`View Image ${i + 1}`}
           className="image-slider-dot-button"
           onClick={() => setImageIndex(i)}
         >
-          { i === imageIndex ? <CircleDot /> : <Circle /> }
+          { i === imageIndex ? (
+            <CircleDot aria-hidden />
+          ) : (
+            <Circle aria-hidden />
+          )}
         </button>
       ))}
     </nav>
